@@ -5,7 +5,16 @@
       <p class="list-title">{{ title }}</p>
       <div class="deletelist" @click="removeList">×</div>
     </div>
-     <card-add :listIndex="listIndex" />
+    <Card v-for="(item, index) in cards"
+      :body="item.body"
+      :key="item.id"
+      :cardIndex = "index"
+      :listIndex = "listIndex"
+      >
+
+    </Card>
+     <CardAdd :listIndex="listIndex"></CardAdd>
+    
   </div>
   <!-- ★ここまで追記 -->
 </template>
@@ -13,15 +22,21 @@
 
 <script>
 import CardAdd from './CardAdd'
+import Card from './Card'
 // ★ここから追記
 export default {
   components: {
-    CardAdd
+    CardAdd,
+    Card
   },
   props: {
     title: {
       type: String,
       required: true
+    },
+    cards:{
+      type: Array,
+      required:true
     },
     listIndex: {
       type: Number,
