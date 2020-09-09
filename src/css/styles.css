@@ -1,5 +1,5 @@
 html {
-  background: orange;
+  background: rgb(75,191,107);
   font-family: 'Avenir', Helvetica, Arial, 'system-ui', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -10,9 +10,10 @@ html {
 }
 
 header {
-  background: orange;
+  background: rgb(75,191,107);
   height: 70px;
-  color: white;
+  color: #FFFFFF;
+  font-weight: bold;
   font-style: italic;
   font-size: 40px;
   text-align: left;
@@ -28,6 +29,8 @@ main {
 .info-line {
   margin: 20px;
   font-size: 20px;
+  color: #FFFFFF;
+  font-weight: bold;
 }
 
 .list-index {
@@ -123,7 +126,7 @@ main {
 
 .list-counter {
   color: rgb(0, 140, 255);
-  padding: 15px;
+  padding: 25px;
 }
 
 .deletelist {
@@ -168,4 +171,6 @@ main {
   font-size: 18px;
   width: 100%;
   word-wrap: break-word;
+  color:rgb(79,93,117);
+  font-weight: 600;
 }

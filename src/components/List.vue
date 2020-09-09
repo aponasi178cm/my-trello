@@ -3,31 +3,37 @@
   <div class="list">
     <div class="listheader">
       <p class="list-title">{{ title }}</p>
+      <div class="list-counter">total: {{totalCardList}}</div>
       <div class="deletelist" @click="removeList">×</div>
     </div>
-    <Card v-for="(item, index) in cards"
+
+
+    <!-- LIstコンポーネント内部(Lits.vue)でcardをドラックアンドドロップさせたいのでgropにcardを付与する -->
+    <draggable group="cards" :list="cards" @end="$emit('change')">
+      <Card v-for="(item, index) in cards"
       :body="item.body"
       :key="item.id"
       :cardIndex = "index"
       :listIndex = "listIndex"
       >
-
     </Card>
-     <CardAdd :listIndex="listIndex"></CardAdd>
-    
+    </draggable>
+    <CardAdd :listIndex="listIndex"></CardAdd>
   </div>
   <!-- ★ここまで追記 -->
 </template>
 
 
 <script>
+import draggable from 'vuedraggable'
 import CardAdd from './CardAdd'
 import Card from './Card'
 // ★ここから追記
 export default {
   components: {
     CardAdd,
-    Card
+    Card,
+    draggable,
   },
   props: {
     title: {
@@ -49,6 +55,11 @@ export default {
         this.$store.dispatch('removelist', { listIndex: this.listIndex })
       }
     },
+  },
+  computed:{
+    totalCardList:function(){
+        return this.cards.length;
+    }
   }
 }
 // ★ここまで追記
